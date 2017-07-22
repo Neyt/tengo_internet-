@@ -1,1 +1,3 @@
-# tengo_internet-
+# este programa en "Python" verifica si tienes internet o no. en un perido determinado de tiempo. ejemplo cada 30 segundos
+#PARA QUE sirve?, es una forma facil de saber cuanto tiempo tu proveedor te da internet en realidad. Al utilizar esto por primera vez encontramos que mi proveedor solo nos daba servicio 75% del tiempo. lo cual explicaba porque teniamos tantos problemas.
+# Y lo deben hacer a proposito ya que daban servicio 3 minutos y lo quitaban por 1 en promedio. lo cual es tiempo suficiente para darte cuenta que el internet no funciona. pero no hay tiempo para llamar al servicio al cliente o hacer algo al respecto. Lo cual nos vuelve locos. 
