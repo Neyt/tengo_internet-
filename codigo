@@ -4,12 +4,14 @@
 
 import time
 #este codigo es un temporalizaor en este caso 60 segundo * 5 minutos.
-timeout = time.time() + 60*5   # 5 minutos
+timeout = time.time() + 60*3   # 3 minutos
+
+data = []
 
 #luego inicia el programa a correr mientras los minutos descritos en el temporalizador no hayan caducado. el momento que esto pasa se detiene
-print ('ejecutando codigo cada 30 segundos por 5 minutos')
+print ('ejecutando codigo cada 15 segundos por 3 minutos')
 while True:
-    time.sleep(30)
+    time.sleep(10)
     if time.time() > timeout:
         break
     else: 
@@ -23,10 +25,16 @@ while True:
             try:
                 conn.request("HEAD", "/")
                 conn.close()
-                print ('conectado ' + time.asctime( time.localtime(time.time()) ))
+                result = ('conectado ' + time.asctime( time.localtime(time.time()) ))
+                data.append(result)
+                print (result)
                 return True
             except:
                 conn.close()
-                print ('no conectado '+time.asctime( time.localtime(time.time()) ))
+                result = ('no conectado '+time.asctime( time.localtime(time.time()) ))
+                data.append(result)
+                print (result)
                 return False
         have_internet()
+
+print (data)
