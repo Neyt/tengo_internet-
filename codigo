@@ -1,0 +1,32 @@
+#por el momento tiene un temporalizador para evitar que corra para siempre mientras no este terminado.
+
+#este codigo sirve par imprimir si es que hay internet o no.
+# lo hace hacieno un pedido a google (porque su pagina siempre esta funcionando)
+# y luego imprime si esta o no conectado y la fecha y hora.
+
+import time
+#este codigo es un temporalizaor en este caso 60 segundo * 5 minutos.
+timeout = time.time() + 60*5   # 5 minutos
+
+#luego inicia el programa a correr mientras los minutos descritos en el temporalizador no hayan caducado. el momento que esto pasa se detiene
+while True:
+    if time.time() > timeout:
+        break
+    else: 
+        try:
+            import httplib
+        except:
+            import http.client as httplib
+
+        def have_internet(): #esta funcion se llama have_internet y solo hace un pequeno pedido a google no descarga la pagina y espera 5 segundos antes de rendirse
+            conn = httplib.HTTPConnection("www.google.com", timeout=5)
+            try:
+                conn.request("HEAD", "/")
+                conn.close()
+                print ('conectado ' + time.asctime( time.localtime(time.time()) ))
+                return True
+            except:
+                conn.close()
+                print ('no conectado '+time.asctime( time.localtime(time.time()) ))
+                return False
+        have_internet()
