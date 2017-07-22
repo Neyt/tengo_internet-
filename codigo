@@ -1,5 +1,3 @@
-#por el momento tiene un temporalizador para evitar que corra para siempre mientras no este terminado.
-
 #este codigo sirve par imprimir si es que hay internet o no.
 # lo hace hacieno un pedido a google (porque su pagina siempre esta funcionando)
 # y luego imprime si esta o no conectado y la fecha y hora.
@@ -9,7 +7,9 @@ import time
 timeout = time.time() + 60*5   # 5 minutos
 
 #luego inicia el programa a correr mientras los minutos descritos en el temporalizador no hayan caducado. el momento que esto pasa se detiene
+print ('ejecutando codigo cada 30 segundos por 5 minutos')
 while True:
+    time.sleep(30)
     if time.time() > timeout:
         break
     else: 
