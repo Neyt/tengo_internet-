@@ -1,17 +1,28 @@
-#este codigo sirve par imprimir si es que hay internet o no.
-# lo hace hacieno un pedido a google (porque su pagina siempre esta funcionando)
-# y luego imprime si esta o no conectado y la fecha y hora.
+#este codigo sirve par imprimir si es que hay internet o no. lo hace hacieno un pedido a google (porque su pagina siempre esta funcionando) y luego imprime si esta o no conectado y la fecha y hora.
 
+
+
+#por favor defina las siguientes metricas:
+
+minutos = 0.5 #cuantos minutos quiere que corra el programa?
+monitoreo_en_segundos = 5 #cantos segundos de espera antes de hacer el siguiente monitoreo
+
+
+## codigo -------------------------------------------------------------------
+import os
 import time
-#este codigo es un temporalizaor en este caso 60 segundo * 5 minutos.
-timeout = time.time() + 60*3   # 3 minutos
+print (os.path.realpath(__file__)) #imprime donde esta hubicado este programa
 
-data = []
+#este codigo es un temporalizaor en este caso 60 segundo * X minutos definidos arriba.
+timeout = time.time() + 60*minutos
+
+data = [] #crea la lista para guardar la informacion
+
 
 #luego inicia el programa a correr mientras los minutos descritos en el temporalizador no hayan caducado. el momento que esto pasa se detiene
-print ('ejecutando codigo cada 15 segundos por 3 minutos')
+print ('ejecutando codigo cada '+ str(monitoreo_en_segundos) +' segundos por '+ str(minutos) +' minutos')
 while True:
-    time.sleep(10)
+    time.sleep(monitoreo_en_segundos)
     if time.time() > timeout:
         break
     else: 
@@ -37,4 +48,7 @@ while True:
                 return False
         have_internet()
 
-print (data)
+#print (data)
+f= open("historial.txt","w+")
+f.write(str(data))
+f.close() 
